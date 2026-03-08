@@ -71,7 +71,7 @@ function generarGrafica(anioInicio, inversion) {
 
   const precioInicial = historialBTC[anioInicio];
   const btcComprados = inversion / precioInicial;
-  const valores = precios.map((p) => p / precios[0]);
+  const valores = precios.map((p) => p * btcComprados);
 
   if (grafica) grafica.destroy();
 
@@ -81,8 +81,8 @@ function generarGrafica(anioInicio, inversion) {
       labels: años,
       datasets: [
         {
-          label: "Precio de Bitcoin (USD)",
-          data: precios,
+          label: "Valor de tu inversión",
+          data: valores,
           borderColor: "#FFD700",
           backgroundColor: "rgba(255,215,0,0.15)",
           borderWidth: 4,
@@ -97,7 +97,6 @@ function generarGrafica(anioInicio, inversion) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      resizeDelay: 200,
       animation: false,
       scales: {
         x: {
@@ -105,33 +104,15 @@ function generarGrafica(anioInicio, inversion) {
           grid: { color: "rgba(255,255,255,0.05)" }
         },
         y: {
-          type: "logarithmic",
-          min: 1,
-          max: precios[precios.length - 1] * 1.2,
           ticks: {
             color: "#b8c0d9",
-            callback: function(value) {
-              return "$" + value.toLocaleString("es-MX");
-            }
+            callback: (value) => "$" + value.toLocaleString("es-MX")
           },
           grid: { color: "rgba(255,255,255,0.05)" }
-        }
-      },
-      plugins: {
-        legend: {
-          labels: { color: "#ffffff" }
-        },
-        tooltip: {
-          backgroundColor: "#111a2e",
-          titleColor: "#FFD700",
-          bodyColor: "#ffffff",
-          borderColor: "#FFD700",
-          borderWidth: 1
         }
       }
     }
   });
-
 }
 
 btnSimular?.addEventListener("click", () => {

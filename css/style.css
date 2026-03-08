@@ -486,3 +486,15 @@ body {
   /* ESTA LÍNEA ES LA QUE EVITA QUE SE HAGA GIGANTE */
   box-sizing: border-box;
 }
+.big-chart {
+  width: 100%;
+  max-width: 700px;
+  height: 380px;
+  margin-top: 2rem;
+  background: #0f1624; /* negro azulado */
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
