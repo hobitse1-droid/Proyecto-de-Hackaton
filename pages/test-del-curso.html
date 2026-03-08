@@ -1,169 +1,265 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Test Final del Curso</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8">
+<title>Test Final del Curso</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    .test-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 18px;
-      box-shadow: var(--shadow-strong);
-    }
-    .pregunta {
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      background: var(--bg-card-2);
-      border-radius: 14px;
-    }
-    .opcion {
-      padding: 0.7rem 1rem;
-      margin: 0.5rem 0;
-      background: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .opcion:hover {
-      background: rgba(255,255,255,0.15);
-    }
-    .correcta {
-      background: rgba(0,200,83,0.25) !important;
-      border: 1px solid var(--accent-green);
-    }
-    .incorrecta {
-      background: rgba(213,0,0,0.25) !important;
-      border: 1px solid var(--accent-red);
-    }
-    #resultado {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: var(--bg-card-2);
-      border-radius: 14px;
-      text-align: center;
-      display: none;
-    }
-    #acciones-finales {
-      margin-top: 2rem;
-      display: none;
-      text-align: center;
-    }
-    #acciones-finales button {
-      margin: 0.5rem;
-    }
-  </style>
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+.test-container{
+max-width:800px;
+margin:auto;
+background:var(--bg-card);
+padding:2rem;
+border-radius:18px;
+box-shadow:var(--shadow-strong);
+}
+
+.pregunta{
+margin-bottom:2rem;
+padding:1.5rem;
+background:var(--bg-card-2);
+border-radius:14px;
+}
+
+.opcion{
+padding:.7rem 1rem;
+margin:.5rem 0;
+background:rgba(255,255,255,.05);
+border-radius:10px;
+cursor:pointer;
+transition:.2s;
+}
+
+.opcion:hover{
+background:rgba(255,255,255,.15);
+}
+
+.correcta{
+background:rgba(0,200,83,.25)!important;
+border:1px solid var(--accent-green);
+}
+
+.incorrecta{
+background:rgba(213,0,0,.25)!important;
+border:1px solid var(--accent-red);
+}
+
+#resultado{
+margin-top:2rem;
+padding:1.5rem;
+background:var(--bg-card-2);
+border-radius:14px;
+text-align:center;
+display:none;
+}
+
+#acciones-finales{
+margin-top:2rem;
+display:none;
+text-align:center;
+}
+
+#acciones-finales button{
+margin:.5rem;
+}
+</style>
 </head>
 
 <body>
 
 <header class="main-header">
-  <div class="logo">Tecnológico de software</div>
-  <nav class="main-nav">
-    <a href="../index.html">Inicio</a>
-  </nav>
+<div class="logo">Tecnológico de software</div>
+<nav class="main-nav">
+<a href="../index.html">Inicio</a>
+</nav>
 </header>
 
 <section class="section">
-  <div class="section-inner">
+<div class="section-inner">
 
-    <h1 class="section-title center">Test Final del Curso</h1>
-    <p class="section-subtitle center">
-      Responde 5 preguntas aleatorias.  
-      Si obtienes 5/5 podrás descargar tu certificado.
-    </p>
+<h1 class="section-title center">Test Final del Curso</h1>
+<p class="section-subtitle center">
+Responde 5 preguntas aleatorias.  
+Si obtienes 5/5 podrás descargar tu certificado.
+</p>
 
-    <div class="test-container" id="test"></div>
+<div class="test-container" id="test"></div>
 
-    <div id="resultado"></div>
+<div id="resultado"></div>
 
-    <div id="acciones-finales">
-      <button class="btn btn-outline" onclick="location.href='../index.html'">Volver a los cursos</button>
-      <button class="btn btn-white" id="btn-reintentar">Volver a generar preguntas</button>
-      <button class="btn btn-white" id="btn-certificado" style="display:none;">Descargar certificado</button>
-    </div>
+<div id="acciones-finales">
 
-  </div>
+<button class="btn btn-outline"
+onclick="location.href='../index.html'">
+Volver a los cursos
+</button>
+
+<button class="btn btn-white"
+onclick="location.reload()">
+Generar preguntas otra vez
+</button>
+
+<button class="btn btn-white"
+id="btn-certificado"
+style="display:none;">
+Descargar certificado
+</button>
+
+</div>
+
+</div>
 </section>
 
 <script>
-  const preguntasBase = [
-    { p: "¿Quién creó Bitcoin?", o: ["Satoshi Nakamoto", "Elon Musk", "Bill Gates"], c: "Satoshi Nakamoto" },
-    { p: "¿En qué año nació Bitcoin?", o: ["2005", "2009", "2012"], c: "2009" },
-    { p: "¿Qué tecnología usa Bitcoin?", o: ["Blockchain", "Inteligencia artificial", "Bases de datos privadas"], c: "Blockchain" },
-    { p: "¿Para qué usan más Bitcoin los mexicanos?", o: ["Ahorrar y protegerse de la inflación", "Comprar videojuegos", "Pagar impuestos"], c: "Ahorrar y protegerse de la inflación" },
-    { p: "¿Qué afecta más al peso mexicano?", o: ["La inflación", "El clima", "La falta de internet"], c: "La inflación" },
-    { p: "¿Es legal usar Bitcoin en México?", o: ["Sí", "No", "Solo los bancos"], c: "Sí" },
-    { p: "¿Cuál es una ventaja de Bitcoin?", o: ["Es limitado y no puede imprimirse", "Se falsifica fácil", "Lo controla un país"], c: "Es limitado y no puede imprimirse" },
-    { p: "¿Cuál es un riesgo importante?", o: ["Perder tu clave privada", "Que el gobierno lo imprima", "Que desaparezca internet"], c: "Perder tu clave privada" },
-    { p: "¿Bitcoin es para hacerse rico rápido?", o: ["Sí", "No, es para ahorrar a largo plazo", "Solo los domingos"], c: "No, es para ahorrar a largo plazo" }
-  ];
 
-  const preguntas = preguntasBase.sort(() => Math.random() - 0.5).slice(0, 5);
-  const testDiv = document.getElementById("test");
-  let respuestasCorrectas = 0;
+const preguntasBase=[
 
-  preguntas.forEach((q, index) => {
-    const div = document.createElement("div");
-    div.className = "pregunta";
+{p:"¿Quién creó Bitcoin?",
+o:["Satoshi Nakamoto","Elon Musk","Bill Gates"],
+c:"Satoshi Nakamoto"},
 
-    div.innerHTML = `
-      <h3>${index + 1}. ${q.p}</h3>
-      ${q.o.map(op => `<div class="opcion" data-correct="${op === q.c}">${op}</div>`).join("")}
-    `;
+{p:"¿En qué año nació Bitcoin?",
+o:["2005","2009","2012"],
+c:"2009"},
 
-    testDiv.appendChild(div);
-  });
+{p:"¿Qué tecnología usa Bitcoin?",
+o:["Blockchain","Inteligencia artificial","Bases de datos privadas"],
+c:"Blockchain"},
 
-  document.querySelectorAll(".opcion").forEach(op => {
-    op.addEventListener("click", () => {
-      const esCorrecta = op.dataset.correct === "true";
+{p:"¿Para qué usan más Bitcoin los mexicanos?",
+o:["Ahorrar y protegerse de la inflación","Comprar videojuegos","Pagar impuestos"],
+c:"Ahorrar y protegerse de la inflación"},
 
-      if (esCorrecta) {
-        op.classList.add("correcta");
-        respuestasCorrectas++;
-      } else {
-        op.classList.add("incorrecta");
-      }
+{p:"¿Qué afecta más al peso mexicano?",
+o:["La inflación","El clima","La falta de internet"],
+c:"La inflación"},
 
-      const hermanos = op.parentElement.querySelectorAll(".opcion");
-      hermanos.forEach(h => h.style.pointerEvents = "none");
+{p:"¿Es legal usar Bitcoin en México?",
+o:["Sí","No","Solo los bancos"],
+c:"Sí"},
 
-      if (document.querySelectorAll(".correcta, .incorrecta").length === preguntas.length * 3) {
-        mostrarResultado();
-      }
-    });
-  });
+{p:"¿Cuál es una ventaja de Bitcoin?",
+o:["Es limitado y no puede imprimirse","Se falsifica fácil","Lo controla un país"],
+c:"Es limitado y no puede imprimirse"},
 
-  function mostrarResultado() {
-    const box = document.getElementById("resultado");
-    const acciones = document.getElementById("acciones-finales");
-    const btnCertificado = document.getElementById("btn-certificado");
+{p:"¿Cuál es un riesgo importante?",
+o:["Perder tu clave privada","Que el gobierno lo imprima","Que desaparezca internet"],
+c:"Perder tu clave privada"},
 
-    box.style.display = "block";
-    acciones.style.display = "block";
+{p:"¿Bitcoin es para hacerse rico rápido?",
+o:["Sí","No, es para ahorrar a largo plazo","Solo los domingos"],
+c:"No, es para ahorrar a largo plazo"}
 
-    if (respuestasCorrectas === 5) {
-      box.innerHTML = `<h2>🎉 ¡Perfecto! Obtuviste ${respuestasCorrectas}/5</h2>`;
-      btnCertificado.style.display = "inline-block";
-    } else {
-      box.innerHTML = `<h2>Obtuviste ${respuestasCorrectas}/5</h2>`;
-      btnCertificado.style.display = "none";
-    }
-  }
+];
 
-  document.getElementById("btn-reintentar").onclick = () => location.reload();
+const preguntas=preguntasBase
+.sort(()=>Math.random()-0.5)
+.slice(0,5);
 
-  document.getElementById("btn-certificado").addEventListener("click", () => {
-    const link = document.createElement("a");
-    link.href = "../img/certificado.png";
-    link.download = "certificado-bitcoin.png";
-    link.click();
-  });
+const testDiv=document.getElementById("test");
+
+let respuestasCorrectas=0;
+let preguntasRespondidas=0;
+
+preguntas.forEach((q,index)=>{
+
+const div=document.createElement("div");
+div.className="pregunta";
+
+div.innerHTML=`
+<h3>${index+1}. ${q.p}</h3>
+${q.o.map(op=>`
+<div class="opcion"
+data-correct="${op===q.c}">
+${op}
+</div>
+`).join("")}
+`;
+
+testDiv.appendChild(div);
+
+});
+
+document.querySelectorAll(".opcion")
+.forEach(op=>{
+
+op.addEventListener("click",()=>{
+
+const preguntaDiv=op.parentElement;
+
+if(preguntaDiv.classList.contains("respondida"))
+return;
+
+preguntaDiv.classList.add("respondida");
+
+const esCorrecta=op.dataset.correct==="true";
+
+if(esCorrecta){
+
+op.classList.add("correcta");
+respuestasCorrectas++;
+
+}else{
+
+op.classList.add("incorrecta");
+
+}
+
+preguntaDiv
+.querySelectorAll(".opcion")
+.forEach(o=>o.style.pointerEvents="none");
+
+preguntasRespondidas++;
+
+if(preguntasRespondidas===5){
+
+mostrarResultado();
+
+}
+
+});
+
+});
+
+function mostrarResultado(){
+
+const box=document.getElementById("resultado");
+const acciones=document.getElementById("acciones-finales");
+const btnCertificado=document.getElementById("btn-certificado");
+
+box.style.display="block";
+acciones.style.display="block";
+
+box.innerHTML=
+`<h2>Tu puntuación: ${respuestasCorrectas}/5</h2>`;
+
+if(respuestasCorrectas===5){
+
+box.innerHTML+=
+"<p>🎉 ¡Perfecto! Puedes descargar tu certificado.</p>";
+
+btnCertificado.style.display="inline-block";
+
+}
+
+}
+
+document
+.getElementById("btn-certificado")
+.addEventListener("click",()=>{
+
+const link=document.createElement("a");
+
+link.href="../img/certificado.png";
+link.download="certificado-bitcoin.png";
+
+link.click();
+
+});
+
 </script>
 
 </body>
