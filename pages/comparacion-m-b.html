@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comparación MX vs Bitcoin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    .contenedor {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--bg-card);
+      border-radius: 18px;
+      box-shadow: var(--shadow-strong);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .selector {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    select {
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      background: var(--bg-card-2);
+      color: white;
+      border: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    th {
+      background: var(--bg-card-2);
+      font-weight: bold;
+    }
+
+    .explicacion, .fuentes {
+      margin-top: 2rem;
+      background: var(--bg-card-2);
+      padding: 1.5rem;
+      border-radius: 14px;
+    }
+
+    .explicacion {
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    .fuentes {
+      border-left: 4px solid var(--accent-green);
+    }
+
+    .acciones {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .acciones button {
+      margin: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="main-header">
+  <div class="logo">Tecnológico de software</div>
+  <nav class="main-nav">
+    <a href="../index.html">Inicio</a>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="section-inner">
+
+    <h1 class="section-title center">Comparación: Inflación MX vs Bitcoin</h1>
+    <p class="section-subtitle center">Últimos 10 años con datos reales.</p>
+
+    <div class="contenedor">
+
+      <!-- SELECTOR DE AÑOS -->
+      <div class="selector">
+        <div>
+          <label>Año inicial</label><br>
+          <select id="inicio"></select>
+        </div>
+        <div>
+          <label>Año final</label><br>
+          <select id="fin"></select>
+        </div>
+      </div>
+
+      <!-- GRÁFICA -->
+      <canvas id="grafica" height="120"></canvas>
+
+      <!-- TABLA -->
+      <table>
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th>Inflación MX (%)</th>
+            <th>Precio BTC (USD)</th>
+          </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+      </table>
+
+      <!-- EXPLICACIÓN -->
+      <div class="explicacion">
+        <h3>¿Qué significa esta comparación?</h3>
+        <p class="body-text">
+          • La inflación muestra cuánto pierde valor el peso mexicano cada año.<br>
+          • Bitcoin muestra cuánto ha aumentado su precio promedio anual.<br>
+          • Si la inflación sube y Bitcoin también sube, Bitcoin protege mejor el valor del dinero.<br>
+          • Si la inflación sube pero Bitcoin baja, ese año fue débil para BTC.<br>
+        </p>
+      </div>
+
+      <!-- FUENTES -->
+      <div class="fuentes">
+        <h3>Fuentes oficiales</h3>
+        <p class="body-text">
+          • Inflación México: INEGI – Índice Nacional de Precios al Consumidor (INPC).<br>
+          • Precio de Bitcoin: Datos históricos de CoinMarketCap.<br>
+        </p>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="acciones">
+        <button class="btn btn-outline" onclick="location.href='../index.html'">Volver al inicio</button>
+        <button class="btn btn-white" onclick="location.reload()">Actualizar datos</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const datos = [
+    { año: 2014, inflacion: 4.08, btc: 520 },
+    { año: 2015, inflacion: 2.13, btc: 250 },
+    { año: 2016, inflacion: 2.82, btc: 570 },
+    { año: 2017, inflacion: 6.77, btc: 4000 },
+    { año: 2018, inflacion: 4.83, btc: 7500 },
+    { año: 2019, inflacion: 2.83, btc: 7200 },
+    { año: 2020, inflacion: 3.15, btc: 9000 },
+    { año: 2021, inflacion: 7.36, btc: 47000 },
+    { año: 2022, inflacion: 7.82, btc: 28000 },
+    { año: 2023, inflacion: 4.66, btc: 34000 },
+    { año: 2024, inflacion: 4.40, btc: 60000 }
+  ];
+
+  const inicio = document.getElementById("inicio");
+  const fin = document.getElementById("fin");
+  const tabla = document.getElementById("tabla");
+
+  datos.forEach(d => {
+    inicio.innerHTML += `<option value="${d.año}">${d.año}</option>`;
+    fin.innerHTML += `<option value="${d.año}">${d.año}</option>`;
+  });
+
+  inicio.value = 2014;
+  fin.value = 2024;
+
+  let grafica;
+
+  function actualizar() {
+    const a = parseInt(inicio.value);
+    const b = parseInt(fin.value);
+
+    const filtrados = datos.filter(d => d.año >= a && d.año <= b);
+
+    tabla.innerHTML = "";
+    filtrados.forEach(d => {
+      tabla.innerHTML += `
+        <tr>
+          <td>${d.año}</td>
+          <td>${d.inflacion}%</td>
+          <td>$${d.btc.toLocaleString()}</td>
+        </tr>
+      `;
+    });
+
+    const labels = filtrados.map(d => d.año);
+    const inflacion = filtrados.map(d => d.inflacion);
+    const btc = filtrados.map(d => d.btc);
+
+    if (grafica) grafica.destroy();
+
+    grafica = new Chart(document.getElementById("grafica"), {
+      type: "line",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Inflación MX (%)",
+            data: inflacion,
+            borderColor: "#00bcd4",
+            backgroundColor: "rgba(0,188,212,0.2)",
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            pointBackgroundColor: "#00e5ff"
+          },
+          {
+            label: "Bitcoin (USD)",
+            data: btc,
+            borderColor: "#fbc02d",
+            backgroundColor: "rgba(251,192,45,0.2)",
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            pointBackgroundColor: "#ffeb3b"
+          }
+        ]
+      },
+      options: {
+        animation: {
+          duration: 1500,
+          easing: "easeOutBounce"
+        },
+        scales: {
+          y: { beginAtZero: false }
+        }
+      }
+    });
+  }
+
+  inicio.onchange = actualizar;
+  fin.onchange = actualizar;
+
+  actualizar();
+</script>
+
+</body>
+</html>

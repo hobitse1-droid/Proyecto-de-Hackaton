@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bitcoin limitado: solo 21 millones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .story-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--bg-card);
+      border-radius: 18px;
+      box-shadow: var(--shadow-strong);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .story-image {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .highlight {
+      background: var(--bg-card-2);
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="main-header">
+  <div class="logo">Tecnológico de software</div>
+  <nav class="main-nav">
+    <a href="../index.html">Inicio</a>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="section-inner">
+
+    <div class="story-container">
+
+      <h1 class="section-title">Bitcoin limitado</h1>
+      <p class="section-subtitle">Solo existirán 21 millones. Nunca más.</p>
+
+        <img src="../img/21.png" alt="Bitcoin limitado" class="story-image">
+
+      <p class="body-text">
+        A diferencia del dinero tradicional, Bitcoin tiene una característica única:
+        <strong>nadie puede crear más</strong>. Su oferta está limitada a 21 millones de unidades.
+      </p>
+
+      <div class="highlight">
+        <h3>¿Por qué importa?</h3>
+        <p class="body-text">
+          Cuando algo es limitado, tiende a aumentar su valor con el tiempo.
+          Es la misma razón por la que el oro es valioso.
+        </p>
+      </div>
+
+      <p class="body-text">
+        Esta limitación protege a Bitcoin de la inflación y lo convierte en una forma de ahorro
+        a largo plazo para millones de personas alrededor del mundo.
+      </p>
+
+      <div class="cierre-actions" style="margin-top:2rem;">
+        <button class="btn btn-outline" onclick="location.href='historia-pizzas.html'">Historia anterior</button>
+        <button class="btn btn-white" onclick="location.href='historia-programador-sin-password.html'">Siguiente historia</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

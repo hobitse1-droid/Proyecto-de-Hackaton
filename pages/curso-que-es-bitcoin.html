@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Curso: ¿Qué es Bitcoin?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .quiz-card {
+      background: var(--bg-card-2);
+      padding: 1.5rem;
+      border-radius: 14px;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-soft);
+    }
+    .quiz-card h3 {
+      margin-top: 0;
+    }
+    .quiz-option {
+      margin: 0.5rem 0;
+      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .quiz-option:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    .quiz-option.correct {
+      background: rgba(0,200,83,0.25);
+      border: 1px solid var(--accent-green);
+    }
+    .quiz-option.wrong {
+      background: rgba(213,0,0,0.25);
+      border: 1px solid var(--accent-red);
+    }
+    #resultado-final {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 14px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="main-header">
+    <div class="logo">Tecnológico de software</div>
+    <nav class="main-nav">
+      <a href="../index.html">Inicio</a>
+      <a href="#contenido">Contenido</a>
+      <a href="#test-final">Test</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="section-inner">
+
+      <h1 class="section-title">¿Qué es Bitcoin?</h1>
+      <p class="section-subtitle">
+        Aprende desde cero qué es Bitcoin, por qué existe y cómo funciona.
+      </p>
+
+      <!-- MÓDULO 1 -->
+      <section id="contenido" class="curso-modulo">
+        <h2 class="curso-modulo-titulo">1. ¿Qué es exactamente Bitcoin?</h2>
+        <p class="body-text">
+          Bitcoin es una moneda digital creada en 2009 por Satoshi Nakamoto. No depende de bancos ni gobiernos, 
+          y funciona gracias a miles de computadoras alrededor del mundo.
+        </p>
+
+        <div class="dark-card" style="margin-top:1.5rem;">
+          <h3>Dato curioso</h3>
+          <p class="body-text">
+            El primer precio registrado de Bitcoin fue de <strong>$0.003 USD</strong>. 
+            Con 1 dólar podías comprar más de 300 BTC.
+          </p>
+        </div>
+
+        <!-- Pregunta interactiva -->
+        <div class="quiz-card">
+          <h3>Pregunta rápida</h3>
+          <p>¿Quién creó Bitcoin?</p>
+          <div class="quiz-option" data-correct="true">Satoshi Nakamoto</div>
+          <div class="quiz-option">Elon Musk</div>
+          <div class="quiz-option">Bill Gates</div>
+        </div>
+      </section>
+
+      <!-- MÓDULO 2 -->
+      <section class="curso-modulo">
+        <h2 class="curso-modulo-titulo">2. ¿Por qué se creó Bitcoin?</h2>
+        <p class="body-text">
+          Bitcoin nació como respuesta a la crisis financiera de 2008. Su objetivo es permitir que cualquier persona 
+          envíe dinero sin intermediarios, de forma segura y transparente.
+        </p>
+
+        <ul class="body-text">
+          <li>Evitar la impresión ilimitada de dinero</li>
+          <li>Dar control financiero a las personas</li>
+          <li>Crear un sistema transparente y verificable</li>
+        </ul>
+
+        <!-- Pregunta interactiva -->
+        <div class="quiz-card">
+          <h3>Pregunta rápida</h3>
+          <p>¿En qué año nació Bitcoin?</p>
+          <div class="quiz-option">2005</div>
+          <div class="quiz-option" data-correct="true">2009</div>
+          <div class="quiz-option">2012</div>
+        </div>
+      </section>
+
+      <!-- MÓDULO 3 -->
+      <section class="curso-modulo">
+        <h2 class="curso-modulo-titulo">3. ¿Cómo funciona Bitcoin?</h2>
+        <p class="body-text">
+          Bitcoin funciona gracias a la tecnología blockchain: un registro público donde se guardan todas las transacciones.
+        </p>
+
+        <div class="dark-card" style="margin-top:1.5rem;">
+          <h3>Ejemplo sencillo</h3>
+          <p class="body-text">
+            Imagina un cuaderno gigante donde todos anotan cada movimiento de dinero. Ese cuaderno es la blockchain.
+          </p>
+        </div>
+
+        <!-- Pregunta interactiva -->
+        <div class="quiz-card">
+          <h3>Pregunta rápida</h3>
+          <p>¿Qué tecnología usa Bitcoin?</p>
+          <div class="quiz-option">Inteligencia artificial</div>
+          <div class="quiz-option" data-correct="true">Blockchain</div>
+          <div class="quiz-option">Bases de datos privadas</div>
+        </div>
+      </section>
+
+      <!-- TEST FINAL -->
+      <section id="test-final" class="curso-modulo">
+        <h2 class="curso-modulo-titulo">Test final</h2>
+        <p class="body-text">Responde las siguientes preguntas para evaluar tu aprendizaje.</p>
+
+        <button class="btn btn-white" onclick="location.href='test-del-curso.html'">Iniciar test</button>
+
+        <div id="resultado-final"></div>
+      </section>
+
+      <div class="cierre-actions" style="margin-top:3rem;">
+        <button class="btn btn-outline" onclick="location.href='../index.html'">Volver al inicio</button>
+        <button class="btn btn-white" onclick="location.href='curso-bitcoin-mexico.html'">Siguiente módulo</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Interacción de preguntas rápidas
+    document.querySelectorAll(".quiz-option").forEach(op => {
+      op.addEventListener("click", () => {
+        if (op.dataset.correct) {
+          op.classList.add("correct");
+        } else {
+          op.classList.add("wrong");
+        }
+      });
+    });
+
+    // Test final
+    const preguntas = [
+      { p: "¿Quién creó Bitcoin?", r: "Satoshi Nakamoto" },
+      { p: "¿En qué año nació Bitcoin?", r: "2009" },
+      { p: "¿Qué tecnología usa Bitcoin?", r: "Blockchain" }
+    ];
+
+    document.getElementById("btn-test").addEventListener("click", () => {
+      let correctas = 0;
+
+      preguntas.forEach(q => {
+        const respuesta = prompt(q.p);
+        if (respuesta && respuesta.trim().toLowerCase() === q.r.toLowerCase()) {
+          correctas++;
+        }
+      });
+
+      const box = document.getElementById("resultado-final");
+      box.style.display = "block";
+
+      if (correctas === 3) {
+        box.innerHTML = "<h3>¡Excelente! 🎉</h3><p>Dominaste este módulo.</p>";
+      } else if (correctas === 2) {
+        box.innerHTML = "<h3>¡Muy bien! 👏</h3><p>Solo faltó un detalle.</p>";
+      } else if (correctas === 1) {
+        box.innerHTML = "<h3>Bien, pero puedes mejorar 💪</h3><p>Repasa el contenido.</p>";
+      } else {
+        box.innerHTML = "<h3>¡Tú puedes! 🔥</h3><p>Intenta nuevamente.</p>";
+      }
+    });
+  </script>
+
+</body>
+</html>

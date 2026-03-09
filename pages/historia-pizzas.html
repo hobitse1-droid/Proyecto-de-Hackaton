@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Las pizzas más caras de la historia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .story-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--bg-card);
+      border-radius: 18px;
+      box-shadow: var(--shadow-strong);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .story-image {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .highlight {
+      background: var(--bg-card-2);
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="main-header">
+  <div class="logo">Tecnológico de software</div>
+  <nav class="main-nav">
+    <a href="../index.html">Inicio</a>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="section-inner">
+
+    <div class="story-container">
+
+      <h1 class="section-title">Las pizzas más caras de la historia</h1>
+      <p class="section-subtitle">El día en que 10,000 BTC compraron dos pizzas… hoy valdrían millones.</p>
+
+        <img src="../img/pizza.png" alt="Pizza Bitcoin" class="story-image">
+
+      <p class="body-text">
+        En 2010, un programador llamado Laszlo Hanyecz hizo algo que cambiaría la historia del Bitcoin:
+        ofreció pagar <strong>10,000 BTC</strong> por dos pizzas. En ese momento, Bitcoin valía tan poco que
+        nadie imaginaba lo que vendría después.
+      </p>
+
+      <div class="highlight">
+        <h3>Dato impactante</h3>
+        <p class="body-text">
+          Hoy, esos 10,000 BTC valdrían más de <strong>200 millones de dólares</strong>.
+        </p>
+      </div>
+
+      <p class="body-text">
+        Este evento se conoce como el <strong>Bitcoin Pizza Day</strong> y se celebra cada 22 de mayo.
+        Es un recordatorio de lo rápido que puede cambiar el valor de una tecnología nueva.
+      </p>
+
+      <div class="cierre-actions" style="margin-top:2rem;">
+        <button class="btn btn-outline" onclick="location.href='../index.html'">Volver</button>
+        <button class="btn btn-white" onclick="location.href='historia-21-millones.html'">Siguiente historia</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
