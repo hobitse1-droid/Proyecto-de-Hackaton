@@ -102,11 +102,10 @@ onclick="location.reload()">
 Generar preguntas otra vez
 </button>
 
-<button class="btn btn-white"
-id="btn-certificado"
-style="display:none;">
-Descargar certificado
+<button class="btn btn-white" id="btn-certificado" style="display:none;" onclick="location.href='certificado.html'">
+  Ver certificado
 </button>
+
 
 </div>
 
@@ -114,178 +113,169 @@ Descargar certificado
 </section>
 
 <script>
-
 const preguntasBase=[
 
 {p:"¿Quién creó Bitcoin?",
 o:["Satoshi Nakamoto","Elon Musk","Bill Gates"],
-c:"Satoshi Nakamoto"},
+c:"Satoshi Nakamoto",
+exp:"Correcto, porque Satoshi Nakamoto es el creador de Bitcoin."},
 
 {p:"¿En qué año nació Bitcoin?",
 o:["2005","2009","2012"],
-c:"2009"},
+c:"2009",
+exp:"Correcto, Bitcoin nació en 2009 tras la crisis financiera."},
 
 {p:"¿Qué tecnología usa Bitcoin?",
 o:["Blockchain","Inteligencia artificial","Bases de datos privadas"],
-c:"Blockchain"},
+c:"Blockchain",
+exp:"Correcto, Bitcoin funciona gracias a la tecnología blockchain."},
 
 {p:"¿Qué significa el halving en Bitcoin?",
 o:["Que se imprimen más monedas","Que la recompensa a mineros se reduce a la mitad","Que desaparecen nodos"],
-c:"Que la recompensa a mineros se reduce a la mitad"},
+c:"Que la recompensa a mineros se reduce a la mitad",
+exp:"Correcto, el halving reduce la recompensa a mineros cada 4 años."},
 
 {p:"¿Cuál es un riesgo importante en México?",
 o:["Estafas piramidales con el nombre de Bitcoin","Que el gobierno imprima más bitcoins","Que desaparezca internet"],
-c:"Estafas piramidales con el nombre de Bitcoin"},
+c:"Estafas piramidales con el nombre de Bitcoin",
+exp:"Correcto, en México existen estafas que usan el nombre de Bitcoin."},
 
 {p:"¿Qué afecta más al peso mexicano?",
 o:["La inflación","El clima","La falta de internet"],
-c:"La inflación"},
+c:"La inflación",
+exp:"Correcto, la inflación reduce el valor del peso mexicano."},
 
 {p:"¿Es legal usar Bitcoin en México?",
 o:["Sí","No","Solo los bancos"],
-c:"Sí"},
+c:"Sí",
+exp:"Correcto, Bitcoin es legal en México aunque no es moneda oficial."},
 
 {p:"¿Cuál es una ventaja de Bitcoin?",
 o:["Es limitado y no puede imprimirse","Se falsifica fácil","Lo controla un país"],
-c:"Es limitado y no puede imprimirse"},
+c:"Es limitado y no puede imprimirse",
+exp:"Correcto, Bitcoin es limitado a 21 millones de monedas."},
 
 {p:"¿Cuál es un riesgo importante?",
 o:["Perder tu clave privada","Que el gobierno lo imprima","Que desaparezca internet"],
-c:"Perder tu clave privada"},
+c:"Perder tu clave privada",
+exp:"Correcto, si pierdes tu clave privada pierdes acceso a tus bitcoins."},
 
 {p:"¿Bitcoin es para hacerse rico rápido?",
 o:["Sí","No, es para ahorrar a largo plazo","Solo los domingos"],
-c:"No, es para ahorrar a largo plazo"},
+c:"No, es para ahorrar a largo plazo",
+exp:"Correcto, Bitcoin es más útil como ahorro a largo plazo."},
 
 {p:"¿Qué debes hacer para usar Bitcoin con responsabilidad?",
 o:["Invertir más de lo que puedes perder","Usar plataformas reguladas y cuidar tus llaves","Ignorar la educación financiera"],
-c:"Usar plataformas reguladas y cuidar tus llaves"},
+c:"Usar plataformas reguladas y cuidar tus llaves",
+exp:"Correcto, siempre usa plataformas reguladas y protege tus llaves."},
 
 {p:"¿Qué es un nodo en Bitcoin?",
 o:["Una computadora que verifica reglas","Un minero que imprime dinero","Un banco que controla la red"],
-c:"Una computadora que verifica reglas"},
+c:"Una computadora que verifica reglas",
+exp:"Correcto, un nodo es una computadora que valida la red."},
 
 {p:"¿Qué pasa si pierdes tu llave privada?",
 o:["Puedes pedirle al banco una nueva","Pierdes acceso a tus bitcoins","El gobierno te la devuelve"],
-c:"Pierdes acceso a tus bitcoins"},
+c:"Pierdes acceso a tus bitcoins",
+exp:"Correcto, sin tu llave privada no puedes acceder a tus bitcoins."},
 
 {p:"¿Por qué Bitcoin es atractivo en México?",
 o:["Porque el peso pierde valor por inflación","Porque lo controla un país","Porque se imprime ilimitadamente"],
-c:"Porque el peso pierde valor por inflación"},
+c:"Porque el peso pierde valor por inflación",
+exp:"Correcto, Bitcoin protege contra la inflación del peso mexicano."},
 
 {p:"¿Qué consejo práctico es clave al invertir en Bitcoin?",
 o:["Nunca inviertas más de lo que puedes perder","Invierte todo tu dinero","Ignora la seguridad de tus llaves"],
-c:"Nunca inviertas más de lo que puedes perder"}
+c:"Nunca inviertas más de lo que puedes perder",
+exp:"Correcto, nunca inviertas más de lo que estás dispuesto a perder."}
 
 ];
 
-
-const preguntas=preguntasBase
-.sort(()=>Math.random()-0.5)
-.slice(0,5);
-
+const preguntas=preguntasBase.sort(()=>Math.random()-0.5).slice(0,5);
 const testDiv=document.getElementById("test");
 
 let respuestasCorrectas=0;
 let preguntasRespondidas=0;
 
 preguntas.forEach((q,index)=>{
+  const div=document.createElement("div");
+  div.className="pregunta";
 
-const div=document.createElement("div");
-div.className="pregunta";
+  div.innerHTML=`
+    <h3>${index+1}. ${q.p}</h3>
+    ${q.o.map(op=>`
+      <div class="opcion" data-correct="${op===q.c}" data-exp="${q.exp}">
+        ${op}
+      </div>
+    `).join("")}
+    <div class="test-feedback" style="display:none; margin-top:0.5rem; font-size:0.9rem;"></div>
+  `;
 
-div.innerHTML=`
-<h3>${index+1}. ${q.p}</h3>
-${q.o.map(op=>`
-<div class="opcion"
-data-correct="${op===q.c}">
-${op}
-</div>
-`).join("")}
-`;
-
-testDiv.appendChild(div);
-
+  testDiv.appendChild(div);
 });
 
-document.querySelectorAll(".opcion")
-.forEach(op=>{
+document.querySelectorAll(".opcion").forEach(op=>{
+  op.addEventListener("click",()=>{
+    const preguntaDiv=op.parentElement;
+    const feedback=preguntaDiv.querySelector(".test-feedback");
 
-op.addEventListener("click",()=>{
+    if(preguntaDiv.classList.contains("respondida")) return;
+    preguntaDiv.classList.add("respondida");
 
-const preguntaDiv=op.parentElement;
+    const esCorrecta=op.dataset.correct==="true";
 
-if(preguntaDiv.classList.contains("respondida"))
-return;
+    if(esCorrecta){
+      op.classList.add("correcta");
+      respuestasCorrectas++;
+      feedback.innerHTML=`<p style="color:var(--accent-green)">¡Correcto! ${op.dataset.exp}</p>`;
+    } else {
+      op.classList.add("incorrecta");
+      feedback.innerHTML=`<p style="color:var(--accent-red)">Incorrecto. ${op.dataset.exp}</p>`;
+    }
 
-preguntaDiv.classList.add("respondida");
+    feedback.style.display="block";
 
-const esCorrecta=op.dataset.correct==="true";
+    preguntaDiv.querySelectorAll(".opcion").forEach(o=>o.style.pointerEvents="none");
 
-if(esCorrecta){
-
-op.classList.add("correcta");
-respuestasCorrectas++;
-
-}else{
-
-op.classList.add("incorrecta");
-
-}
-
-preguntaDiv
-.querySelectorAll(".opcion")
-.forEach(o=>o.style.pointerEvents="none");
-
-preguntasRespondidas++;
-
-if(preguntasRespondidas===5){
-
-mostrarResultado();
-
-}
-
-});
-
+    preguntasRespondidas++;
+    if(preguntasRespondidas===5){
+      mostrarResultado();
+    }
+  });
 });
 
 function mostrarResultado(){
+  const box=document.getElementById("resultado");
+  const acciones=document.getElementById("acciones-finales");
+  const btnCertificado=document.getElementById("btn-certificado");
 
-const box=document.getElementById("resultado");
-const acciones=document.getElementById("acciones-finales");
-const btnCertificado=document.getElementById("btn-certificado");
+  box.style.display="block";
+  acciones.style.display="block";
 
-box.style.display="block";
-acciones.style.display="block";
+  box.innerHTML=`<h2>Tu puntuación: ${respuestasCorrectas}/5</h2>`;
 
-box.innerHTML=
-`<h2>Tu puntuación: ${respuestasCorrectas}/5</h2>`;
-
-if(respuestasCorrectas===5){
-
-box.innerHTML+=
-"<p>🎉 ¡Perfecto! Puedes descargar tu certificado.</p>";
-
-btnCertificado.style.display="inline-block";
-
+  if(respuestasCorrectas===5){
+    box.innerHTML+="<p>🎉 ¡Perfecto! Nivel Avanzado. Puedes descargar tu certificado.</p>";
+    btnCertificado.style.display="inline-block";
+  } else if(respuestasCorrectas===4){
+    box.innerHTML+="<p>👏 Muy bien, Nivel Explorador. Repasa un poco más y lo lograrás.</p>";
+  } else if(respuestasCorrectas===3){
+    box.innerHTML+="<p>💪 Buen intento, Nivel Aprendiz. Sigue practicando.</p>";
+  } else if(respuestasCorrectas<=2){
+    box.innerHTML+="<p>🔥 No te rindas, Nivel Principiante. Intenta nuevamente.</p>";
+  }
 }
 
-}
 
-document
-.getElementById("btn-certificado")
-.addEventListener("click",()=>{
-
-const link=document.createElement("a");
-
-link.href="../img/certificado.png";
-link.download="certificado-bitcoin.png";
-
-link.click();
-
+document.getElementById("btn-certificado").addEventListener("click",()=>{
+  const link=document.createElement("a");
+  link.href="../img/certificado.png";
+  link.download="certificado-bitcoin.png";
+  link.click();
 });
-
 </script>
+
 
 </body>
 </html>

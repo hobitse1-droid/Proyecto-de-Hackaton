@@ -41,6 +41,7 @@ const resultadoAnio = document.getElementById("resultado-anio");
 const resultadoInversion = document.getElementById("resultado-inversion");
 const resultadoMonto = document.getElementById("resultado-monto");
 const resultadoPorcentaje = document.getElementById("resultado-porcentaje");
+const resultadoSimulador = document.getElementById("resultado-simulador");
 
 // Datos reales aproximados por año
 const historialBTC = {
@@ -124,6 +125,7 @@ btnSimular?.addEventListener("click", () => {
     resultadoInversion.textContent = "$0";
     resultadoMonto.textContent = "$0";
     resultadoPorcentaje.textContent = "0%";
+    resultadoSimulador.style.display = "none";
     return;
   }
 
@@ -139,7 +141,37 @@ btnSimular?.addEventListener("click", () => {
   resultadoInversion.textContent = `$${monto.toLocaleString("es-MX")}`;
   resultadoMonto.textContent = `$${valorHoy.toLocaleString("es-MX")}`;
   resultadoPorcentaje.textContent = `${crecimiento.toFixed(0)}%`;
+
+  mostrarResultado(crecimiento);
 });
+
+// =========================
+// RETROALIMENTACIÓN PERSONALIZADA
+// =========================
+function mostrarResultado(crecimiento) {
+  if (!resultadoSimulador) return;
+  resultadoSimulador.style.display = "block";
+  resultadoSimulador.style.opacity = 0;
+
+  let mensaje = "";
+  if (crecimiento > 0) {
+    mensaje = "<h3 style='color:var(--accent-green)'>¡Buen resultado! 📈</h3><p>Tu ahorro habría crecido, aunque recuerda que Bitcoin es volátil.</p>";
+  } else if (crecimiento < 0) {
+    mensaje = "<h3 style='color:var(--accent-red)'>Resultado negativo 📉</h3><p>Así se refleja la volatilidad de Bitcoin. Es importante invertir con precaución.</p>";
+  } else {
+    mensaje = "<h3 style='color:gray'>Resultado neutro ⚖️</h3><p>El valor se mantuvo estable, pero no garantiza el futuro.</p>";
+  }
+
+  resultadoSimulador.innerHTML = mensaje;
+
+  // Animación fade-in
+  let op = 0;
+  const fade = setInterval(() => {
+    if (op >= 1) clearInterval(fade);
+    resultadoSimulador.style.opacity = op;
+    op += 0.05;
+  }, 30);
+}
 
 // =========================
 // PRECIO ACTUAL BITCOIN
@@ -167,6 +199,10 @@ async function cargarPrecioBitcoin() {
     precioCambioEl.textContent = "Error";
     precioCambioEl.style.color = "var(--accent-red)";
   }
+}
+function actualizarProgreso(porcentaje){
+  const barra=document.getElementById("progreso");
+  barra.style.width=porcentaje+"%";
 }
 
 cargarPrecioBitcoin();

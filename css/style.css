@@ -497,4 +497,48 @@ body {
   box-shadow: 0 18px 40px rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.08);
 }
+.btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.pregunta {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pregunta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+#barra-progreso {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  margin: 1rem 0;
+  height: 12px;
+}
+#progreso {
+  height: 12px;
+  width: 0%;
+  background: var(--accent-green);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+.btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.curso-modulo {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.curso-modulo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
 

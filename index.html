@@ -27,6 +27,9 @@
       <a href="#cierre">Cierre</a>
     </nav>
   </header>
+  <div id="barra-progreso">
+    <div id="progreso"></div>
+  </div>
 
   <main>
 
@@ -146,6 +149,8 @@
               <p>Hoy tendrías: <span id="resultado-monto">$0</span></p>
               <p>Ganancia: <span id="resultado-porcentaje">0%</span></p>
             </div>
+            <div id="resultado-simulador" style="display:none; margin-top:1.5rem; padding:1rem; background:var(--bg-card-2); border-radius:14px;"></div>
+
 
             <p class="simulator-note">Bitcoin no garantiza ganancias, pero su historial es claro.</p>
           </div>
@@ -153,7 +158,6 @@
             <canvas id="graficaBitcoin"></canvas>
           </div>
 
-          <button id="btn-mas-escala" class="btn btn-outline">Aumentar escala</button>
 
 
         </div>

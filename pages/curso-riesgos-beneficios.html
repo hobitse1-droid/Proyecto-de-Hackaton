@@ -102,6 +102,8 @@
           <div class="quiz-option" data-correct="true">Es limitado y no puede imprimirse</div>
           <div class="quiz-option">Lo controla un solo país</div>
           <div class="quiz-option">Se puede falsificar fácilmente</div>
+          <div class="quiz-feedback" style="display:none; margin-top:1rem; font-size:0.9rem;"></div>
+
         </div>
       </section>
 
@@ -134,6 +136,8 @@
           <div class="quiz-option">Que el gobierno lo imprima demasiado</div>
           <div class="quiz-option" data-correct="true">Perder tu clave privada</div>
           <div class="quiz-option">Que desaparezca internet</div>
+          <div class="quiz-feedback" style="display:none; margin-top:1rem; font-size:0.9rem;"></div>
+
         </div>
       </section>
 
@@ -158,6 +162,8 @@
           <div class="quiz-option">Sí, siempre</div>
           <div class="quiz-option" data-correct="true">No, es para ahorrar a largo plazo</div>
           <div class="quiz-option">Solo los domingos</div>
+          <div class="quiz-feedback" style="display:none; margin-top:1rem; font-size:0.9rem;"></div>
+
         </div>
       </section>
       <!-- MÓDULO 4 -->
@@ -221,15 +227,32 @@
 
   <script>
     // Interacción de preguntas rápidas
-    document.querySelectorAll(".quiz-option").forEach(op => {
-      op.addEventListener("click", () => {
-        if (op.dataset.correct) {
-          op.classList.add("correct");
-        } else {
-          op.classList.add("wrong");
-        }
+    document.querySelectorAll(".quiz-card").forEach(card => {
+      const opciones = card.querySelectorAll(".quiz-option");
+      const feedback = card.querySelector(".quiz-feedback");
+
+      opciones.forEach(op => {
+        op.addEventListener("click", () => {
+          if (card.classList.contains("respondida")) return;
+          card.classList.add("respondida");
+
+          const esCorrecta = op.dataset.correct === "true";
+
+          if (esCorrecta) {
+            op.classList.add("correct");
+            feedback.innerHTML = "<p style='color:var(--accent-green)'>¡Correcto! Porque Bitcoin es limitado y no puede imprimirse.</p>";
+          } else {
+            op.classList.add("wrong");
+            feedback.innerHTML = "<p style='color:var(--accent-red)'>Incorrecto. Revisa el módulo sobre halving para entender mejor.</p>";
+          }
+
+          feedback.style.display = "block";
+
+          opciones.forEach(o => o.style.pointerEvents = "none");
+        });
       });
     });
+
 
     // Test final
     const preguntas = [
