@@ -43,6 +43,36 @@
       text-align: center;
       display: none;
     }
+    .curso-modulo {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .curso-modulo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .curso-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .curso-side {
+      width: 120px;
+      opacity: 0.15;
+      position: sticky;
+      top: 100px;
+    }
+
+    .curso-side.left {
+      margin-right: 20px;
+    }
+
+    .curso-side.right {
+      margin-left: 20px;
+    }
+
   </style>
 </head>
 
@@ -57,13 +87,13 @@
     </nav>
   </header>
 
-  <main class="section">
+  <main class="section curso-layout">
     <div class="section-inner">
 
-      <h1 class="section-title">¿Qué es Bitcoin?</h1>
-      <p class="section-subtitle">
-        Aprende desde cero qué es Bitcoin, por qué existe y cómo funciona.
-      </p>
+      <h1 class="section-title">Aprende desde cero qué es Bitcoin, por qué existe y cómo funciona.
+
+      </h1>
+
 
       <!-- MÓDULO 1 -->
       <section id="contenido" class="curso-modulo">
@@ -128,6 +158,68 @@
             Imagina un cuaderno gigante donde todos anotan cada movimiento de dinero. Ese cuaderno es la blockchain.
           </p>
         </div>
+        <!-- MÓDULO 4 -->
+        <section class="curso-modulo">
+          <h2 class="curso-modulo-titulo">4. Halving y los 21 millones</h2>
+          <p class="body-text">
+            Bitcoin tiene un límite máximo de <strong>21 millones</strong> de monedas. 
+            Cada 4 años ocurre el <em>halving</em>, un evento donde la recompensa a los mineros se reduce a la mitad. 
+            Esto asegura que la emisión de Bitcoin sea predecible y controlada, evitando la inflación desmedida.
+          </p>
+          <div class="dark-card" style="margin-top:1.5rem;">
+            <h3>Dato curioso</h3>
+            <p class="body-text">
+              El próximo halving será en 2028, y después de 2140 ya no se crearán nuevos bitcoins.
+            </p>
+          </div>
+        </section>
+
+        <!-- MÓDULO 5 -->
+        <section class="curso-modulo">
+          <h2 class="curso-modulo-titulo">5. Proof of Work</h2>
+          <p class="body-text">
+            Bitcoin se asegura gracias al mecanismo llamado <strong>Proof of Work</strong>. 
+            Los mineros usan poder computacional para resolver problemas matemáticos y validar transacciones. 
+            Este esfuerzo garantiza que nadie pueda falsificar la red.
+          </p>
+          <div class="dark-card" style="margin-top:1.5rem;">
+            <h3>Ejemplo sencillo</h3>
+            <p class="body-text">
+              Es como un concurso mundial de acertijos: quien lo resuelve primero, gana el derecho de escribir en la blockchain.
+            </p>
+          </div>
+        </section>
+
+        <!-- MÓDULO 6 -->
+        <section class="curso-modulo">
+          <h2 class="curso-modulo-titulo">6. Nodos y descentralización</h2>
+          <p class="body-text">
+            Un <strong>nodo</strong> es una computadora que guarda y verifica todas las reglas de Bitcoin. 
+            Miles de nodos en el mundo aseguran que la red sea <em>descentralizada</em>: no depende de un banco ni de un gobierno.
+          </p>
+          <div class="dark-card" style="margin-top:1.5rem;">
+            <h3>Dato curioso</h3>
+            <p class="body-text">
+              Cualquiera puede correr un nodo en su casa con una computadora común.
+            </p>
+          </div>
+        </section>
+
+        <!-- MÓDULO 7 -->
+        <section class="curso-modulo">
+          <h2 class="curso-modulo-titulo">7. Llaves privadas y seguridad</h2>
+          <p class="body-text">
+            Para usar Bitcoin necesitas una <strong>llave privada</strong>, que es como la contraseña que te da acceso a tu dinero. 
+            Si la pierdes, pierdes tus bitcoins. Por eso existen billeteras digitales y frases de recuperación.
+          </p>
+          <div class="dark-card" style="margin-top:1.5rem;">
+            <h3>Ejemplo sencillo</h3>
+            <p class="body-text">
+              Tu llave privada es como la llave de tu casa. Si alguien más la tiene, puede entrar y usar tus cosas.
+            </p>
+          </div>
+        </section>
+
 
         <!-- Pregunta interactiva -->
         <div class="quiz-card">

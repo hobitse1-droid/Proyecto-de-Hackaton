@@ -43,6 +43,36 @@
       text-align: center;
       display: none;
     }
+    .curso-modulo {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .curso-modulo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .curso-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .curso-side {
+      width: 120px;
+      opacity: 0.15;
+      position: sticky;
+      top: 100px;
+    }
+
+    .curso-side.left {
+      margin-right: 20px;
+    }
+
+    .curso-side.right {
+      margin-left: 20px;
+    }
+
   </style>
 </head>
 
@@ -146,6 +176,61 @@
           <div class="quiz-option">Solo los bancos</div>
         </div>
       </section>
+      <!-- MÓDULO 4 -->
+      <section class="curso-modulo">
+        <h2 class="curso-modulo-titulo">4. Caso práctico: Ahorro en pesos vs Bitcoin</h2>
+        <p class="body-text">
+          Imagina que ahorraste <strong>$1,000 MXN cada mes desde 2015</strong>. 
+          En pesos, tu dinero habría perdido valor por la inflación. 
+          En Bitcoin, aunque con altibajos, el crecimiento habría sido mucho mayor.
+        </p>
+        <div class="dark-card" style="margin-top:1.5rem;">
+          <h3>Ejemplo visual</h3>
+          <p class="body-text">
+            Línea azul: ahorro en pesos.  
+            Línea naranja: ahorro en Bitcoin.  
+            Este contraste muestra cómo la inflación afecta directamente a los mexicanos.
+          </p>
+        </div>
+      </section>
+
+      <!-- MÓDULO 5 -->
+      <section class="curso-modulo">
+        <h2 class="curso-modulo-titulo">5. Remesas y Bitcoin</h2>
+        <p class="body-text">
+          México recibe más de <strong>60 mil millones de dólares en remesas cada año</strong>. 
+          Muchas familias pagan comisiones altas por enviar dinero. 
+          Con Bitcoin, las transferencias pueden ser más rápidas y baratas.
+        </p>
+        <div class="dark-card" style="margin-top:1.5rem;">
+          <h3>Dato curioso</h3>
+          <p class="body-text">
+            En algunos estados, como Michoacán y Guanajuato, las remesas son la principal fuente de ingresos. 
+            Bitcoin puede ser una alternativa para reducir costos.
+          </p>
+        </div>
+      </section>
+
+      <!-- MÓDULO 6 -->
+      <section class="curso-modulo">
+        <h2 class="curso-modulo-titulo">6. Riesgos y precauciones en México</h2>
+        <p class="body-text">
+          Aunque Bitcoin es legal, existen riesgos: 
+        </p>
+        <ul class="body-text">
+          <li>Estafas piramidales disfrazadas de “inversión en Bitcoin”</li>
+          <li>Volatilidad del precio</li>
+          <li>Falta de educación financiera</li>
+        </ul>
+        <div class="dark-card" style="margin-top:1.5rem;">
+          <h3>Consejo práctico</h3>
+          <p class="body-text">
+            Nunca inviertas más de lo que estás dispuesto a perder. 
+            Usa solo plataformas reguladas y aprende antes de comprar.
+          </p>
+        </div>
+      </section>
+
 
       <!-- TEST FINAL -->
       <section id="test-final" class="curso-modulo">
