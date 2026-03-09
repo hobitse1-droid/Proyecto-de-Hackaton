@@ -233,24 +233,54 @@
     </section>
 
     <!-- GRÁFICA DE COMPARACIÓN -->
-    <section id="comparacion" class="section comparacion-section animate-on-scroll">
-      <div class="section-inner two-col">
+   <section id="comparacion" class="section comparacion-section animate-on-scroll">
+      <div class="section-inner">
+        <h2 class="section-title center">Inflación vs Bitcoin</h2>
+        <p class="section-subtitle center">Una mirada visual a los últimos 10 años</p>
 
-        <div class="comparacion-image">
-          <img src="img/comparacion.png" alt="Gráfica comparación" class="big-img">
+        <div class="infografia-grid">
+          <div class="infografia-card">
+            <div class="infografia-icon">📉</div>
+            <h3>Inflación en México</h3>
+            <p>+24.5% acumulada</p>
+            <p>El peso pierde valor año tras año.</p>
+          </div>
+
+          <div class="infografia-card">
+            <div class="infografia-icon">💰</div>
+            <h3>Bitcoin</h3>
+            <p>+300% promedio</p>
+            <p>Activo con mejor rendimiento en la década.</p>
+          </div>
+
+          <div class="infografia-card">
+            <div class="infografia-icon">⚖️</div>
+            <h3>Comparación</h3>
+            <p>Bitcoin protege contra la inflación.</p>
+            <p>No garantiza riqueza rápida, pero sí ahorro.</p>
+          </div>
         </div>
-
-        <div class="comparacion-text">
-          <h2 class="section-title">Comparación de los últimos 10 años</h2>
-          <p class="section-subtitle">No se trata de volverte rico. Se trata de proteger tu dinero.</p>
-        <button class="btn btn-white" onclick="location.href='pages/comparacion-m-b.html'">Iniciar simulación</button>
-          <button class="btn btn-outline" data-scroll="#historias">Seguir</button>
-        </div>
-
-
-
       </div>
     </section>
+
+    <section id="comparacion" class="section comparacion-section animate-on-scroll">
+      <div class="section-inner center">
+        <h2 class="section-title">Inflación vs Bitcoin</h2>
+        <p class="section-subtitle">¿Quién protege mejor tu dinero?</p>
+
+        <!-- Imagen ilustrativa -->
+        <img src="img/comparacion.png" alt="Comparación inflación vs Bitcoin" class="comparacion-img">
+
+        <!-- Botón para ir a la página de comparación detallada -->
+        <div class="acciones">
+          <button class="btn btn-white" onclick="location.href='pages/comparacion-m-b.html'">
+            Ver comparación de 10 años
+          </button>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- HISTORIAS -->
     <section id="historias" class="section historias-section animate-on-scroll">
@@ -262,24 +292,29 @@
 
           <div class="historias-list">
 
-            <article class="historia-item">
+            <article class="historia-item dark-card">
+              <div class="historia-icon">🍕</div>
               <h3>Las pizzas más caras</h3>
               <p>Pagaron con Bitcoin cuando valía casi nada… hoy valdría millones.</p>
               <button class="btn btn-outline" onclick="location.href='pages/historia-pizzas.html'">Ver historia</button>
             </article>
 
-            <article class="historia-item">
+            <article class="historia-item dark-card">
+              <div class="historia-icon">🔑</div>
               <h3>Bitcoin limitado</h3>
               <p>Nadie puede imprimir más Bitcoin. Solo existirán 21 millones.</p>
               <button class="btn btn-outline" onclick="location.href='pages/historia-21-millones.html'">Ver historia</button>
             </article>
 
-            <article class="historia-item">
+            <article class="historia-item dark-card">
+              <div class="historia-icon">💻</div>
               <h3>El hombre que perdió 7,000 BTC</h3>
               <p>Olvidó su contraseña y nunca pudo recuperarlos.</p>
               <button class="btn btn-outline" onclick="location.href='pages/historia-programador-sin-password.html'">Ver historia</button>
             </article>
+
           </div>
+
         </div>
 
         <div class="historias-image">

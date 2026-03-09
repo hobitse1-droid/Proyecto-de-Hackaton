@@ -541,4 +541,51 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
+.historia-item {
+  padding: 1.5rem;
+  border-radius: 14px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.historia-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.historia-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.infografia-grid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.infografia-card {
+  flex: 1;
+  background: var(--bg-card-2);
+  padding: 1.5rem;
+  border-radius: 14px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.infografia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.infografia-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.comparacion-img {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: var(--shadow-strong);
+}
 

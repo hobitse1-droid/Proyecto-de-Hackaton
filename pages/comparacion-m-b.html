@@ -80,6 +80,32 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .infografia-grid {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .infografia-card {
+      flex: 1;
+      background: var(--bg-card-2);
+      padding: 1rem;
+      border-radius: 14px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .infografia-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .infografia-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
   </style>
 </head>
 
@@ -111,6 +137,25 @@
           <select id="fin"></select>
         </div>
       </div>
+      <!-- INFOGRAFÍA -->
+      <div class="infografia-grid">
+        <div class="infografia-card">
+          <div class="infografia-icon">📉</div>
+          <h3>Inflación MX</h3>
+          <p>El peso pierde valor cada año</p>
+        </div>
+        <div class="infografia-card">
+          <div class="infografia-icon">💰</div>
+          <h3>Bitcoin</h3>
+          <p>Activo con mejor rendimiento</p>
+        </div>
+        <div class="infografia-card">
+          <div class="infografia-icon">⚖️</div>
+          <h3>Comparación</h3>
+          <p>Bitcoin protege contra la inflación</p>
+        </div>
+      </div>
+
 
       <!-- GRÁFICA -->
       <canvas id="grafica" height="120"></canvas>
